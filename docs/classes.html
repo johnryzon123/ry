@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Classes</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Classes</h1>
+      <p class="tagline">Creating custom data structures with methods.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html" class="active">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>Defining a Class</h2>
+        <p>
+          Classes are blueprints for creating objects. They bundle data (fields)
+          and functions that operate on that data (methods) into a single unit.
+          You can define a class using the <code>class</code> keyword.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">class</span> Greeter {
+    <span class="keyword">data</span> greeting = <span class="string">"Hello"</span>
+
+    <span class="keyword">func</span> sayHi(<span class="keyword">data</span> name) {
+        <span class="keyword">out</span>(<span class="string">"${this.greeting}, ${name}!"</span>)
+    }
+}
+</code></pre>
+        </div>
+
+        <h3>Creating Instances</h3>
+        <p>
+          To create an object (an instance of a class), you call the class like
+          a function. This creates a new instance, and you can then access its
+          methods using dot notation.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="comment"># Create an instance of the Greeter class</span>
+<span class="keyword">data</span> myGreeter = Greeter()
+
+<span class="comment"># Call a method on the instance</span>
+myGreeter.sayHi(<span class="string">"World"</span>) <span class="comment"># Output: Hello, World!</span>
+</code></pre>
+        </div>
+
+        <h3>Constructors</h3>
+        <p>
+          A class can have a special method named <code>init</code>, which acts
+          as a constructor. The <code>init</code> method is automatically called
+          when you create a new instance, and it's the perfect place to set up
+          the object's initial state.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">class</span> Point {
+    <span class="keyword">func</span> init(<span class="keyword">data</span> x, <span class="keyword">data</span> y) {
+        <span class="comment"># 'this' refers to the current instance</span>
+        this.x = x
+        this.y = y
+    }
+
+    <span class="keyword">func</span> toString() {
+        <span class="keyword">return</span> <span class="string">"Point(${this.x}, ${this.y})"</span>
+    }
+}
+
+<span class="comment"># The arguments are passed to the init method</span>
+<span class="keyword">data</span> p = Point(10, 20)
+<span class="keyword">out</span>(p.toString()) <span class="comment"># Output: Point(10, 20)</span>
+</code></pre>
+        </div>
+
+        <h3>Inheritance</h3>
+        <p>
+          Ry supports inheritance, allowing a class to inherit fields and
+          methods from a parent class. To create a child class, use the
+          <code>&lt;</code> symbol. The child class can override parent methods
+          and can also call them using the <code>super</code> keyword.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">class</span> Animal {
+    <span class="keyword">func</span> init(<span class="keyword">data</span> name) {
+        this.name = name
+    }
+
+    <span class="keyword">func</span> speak() {
+        <span class="keyword">out</span>(<span class="string">"${this.name} makes a sound."</span>)
+    }
+}
+
+<span class="comment"># Dog inherits from Animal</span>
+<span class="keyword">class</span> Dog childof <span class="keyword">Animal</span> {
+    <span class="keyword">func</span> init(<span class="keyword">data</span> name, <span class="keyword">data</span> breed) {
+        <span class="comment"># Call the parent's constructor</span>
+        parent.init(name)
+        this.breed = breed
+    }
+
+    <span class="keyword">func</span> speak() {
+        <span class="comment"># Call the parent's method</span>
+        super.speak()
+        <span class="keyword">out</span>(<span class="string">"${this.name} barks."</span>)
+    }
+}
+
+<span class="keyword">data</span> myDog = Dog(<span class="string">"Rex"</span>, <span class="string">"Golden Retriever"</span>)
+myDog.speak()
+<span class="comment"># Output:</span>
+<span class="comment"># Rex makes a sound.</span>
+<span class="comment"># Rex barks.</span>
+</code></pre>
+        </div>
+
+        <h3>Static Methods</h3>
+        <p>
+          You can also define methods that belong to the class itself, rather
+          than to an instance. These are called static methods and are defined
+          using the <code>static</code> keyword. They are useful for creating
+          utility functions that are logically grouped with a class.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">class</span> Math {
+    <span class="keyword">static func</span> add(<span class="keyword">data</span> a, <span class="keyword">data</span> b) {
+        <span class="keyword">return</span> a + b
+    }
+
+    <span class="keyword">static func</span> PI() {
+        <span class="keyword">return</span> 3.14159
+    }
+}
+
+<span class="comment"># Call the static method directly on the class</span>
+<span class="keyword">data</span> sum = Math.add(10, 5)
+<span class="keyword">out</span>(<span class="string">"Sum: ${sum}, PI: ${Math.PI()}"</span>) <span class="comment"># Output: Sum: 15, PI: 3.14159</span>
+</code></pre>
+        </div>
+
+        <p>
+          With classes, you can now model complex data structures. Next, learn
+          how to direct your program's execution with
+          <a href="control-flow.html">Control Flow</a>.
+        </p>
+        <a href="control-flow.html" style="color: white">Next: Control Flow!</a>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

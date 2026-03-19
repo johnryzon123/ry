@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Operators</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Operators</h1>
+      <p class="tagline">Manipulating data with expressions.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html" class="active">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>Using Operators</h2>
+        <p>
+          Operators are special symbols or keywords that perform operations on
+          one or more values (operands) to produce a result. Ry supports a
+          standard set of arithmetic, comparison, and logical operators.
+        </p>
+
+        <h3>Arithmetic Operators</h3>
+        <p>
+          These operators are used to perform mathematical calculations on
+          <code>Number</code> types.
+        </p>
+        <ul>
+          <li><code>+</code> (Addition)</li>
+          <li><code>-</code> (Subtraction)</li>
+          <li><code>*</code> (Multiplication)</li>
+          <li><code>/</code> (Division)</li>
+          <li><code>%</code> (Modulo - remainder of a division)</li>
+        </ul>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> a = 10
+<span class="keyword">data</span> b = 3
+
+<span class="keyword">out</span>(a + b) <span class="comment"># 13</span>
+<span class="keyword">out</span>(a * 2) <span class="comment"># 20</span>
+<span class="keyword">out</span>(a % b) <span class="comment"># 1</span>
+</code></pre>
+        </div>
+
+        <h3>Comparison Operators</h3>
+        <p>
+          Comparison operators are used to compare two values. These expressions
+          always evaluate to a <code>Boolean</code> (<code>true</code> or
+          <code>false</code>).
+        </p>
+        <ul>
+          <li><code>==</code> (Equal to)</li>
+          <li><code>!=</code> (Not equal to)</li>
+          <li><code>&lt;</code> (Less than)</li>
+          <li><code>&gt;</code> (Greater than)</li>
+          <li><code>&lt;=</code> (Less than or equal to)</li>
+          <li><code>&gt;=</code> (Greater than or equal to)</li>
+        </ul>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> score = 95
+<span class="keyword">data</span> passingScore = 70
+
+<span class="keyword">out</span>(score >= passingScore) <span class="comment"># true</span>
+<span class="keyword">out</span>(<span class="string">"hello"</span> == <span class="string">"world"</span>) <span class="comment"># false</span>
+</code></pre>
+        </div>
+
+        <h3>Logical Operators</h3>
+        <p>
+          Logical operators are used to combine or invert boolean values. They
+          are essential for building complex conditions, especially in control
+          flow.
+        </p>
+        <ul>
+          <li><code>and</code> (Logical AND)</li>
+          <li><code>or</code> (Logical OR)</li>
+          <li><code>not</code> (Logical NOT)</li>
+        </ul>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> hasKey = true
+<span class="keyword">data</span> doorLocked = true
+
+<span class="keyword">data</span> canEnter = hasKey and not doorLocked
+<span class="keyword">out</span>(canEnter) <span class="comment"># false</span>
+</code></pre>
+        </div>
+
+        <h3>Bitwise Operators</h3>
+        <p>
+          For low-level manipulation of numbers, Ry provides bitwise operators.
+          These treat numbers as a sequence of binary bits.
+        </p>
+        <ul>
+          <li><code>&</code> (Bitwise AND)</li>
+          <li><code>|</code> (Bitwise OR)</li>
+          <li><code>^</code> (Bitwise XOR)</li>
+          <li><code>~</code> (Bitwise NOT)</li>
+          <li><code>&lt;&lt;</code> (Left Shift)</li>
+          <li><code>&gt;&gt;</code> (Right Shift)</li>
+        </ul>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> a = 5  <span class="comment"># 0101 in binary</span>
+<span class="keyword">data</span> b = 3  <span class="comment"># 0011 in binary</span>
+
+<span class="keyword">out</span>(a & b) <span class="comment"># 1 (0001)</span>
+<span class="keyword">out</span>(a | b) <span class="comment"># 7 (0111)</span>
+<span class="keyword">out</span>(a ^ b) <span class="comment"># 6 (0110)</span>
+<span class="keyword">out</span>(~a)  <span class="comment"># -6 (due to two's complement)</span>
+<span class="keyword">out</span>(a &lt;&lt; 1) <span class="comment"># 10 (1010)</span>
+<span class="keyword">out</span>(a &gt;&gt; 1) <span class="comment"># 2 (0010)</span>
+</code></pre>
+        </div>
+
+        <p>
+          Now that you know how to work with data, it's time to organize your
+          code into reusable blocks in the
+          <a href="functions.html">Functions</a> section.
+        </p>
+        <a href="functions.html" style="color: white">Next: Functions!</a>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

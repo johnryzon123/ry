@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | C++ Modules</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>C++ Modules</h1>
+      <p class="tagline">Extending Ry with native speed.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html" class="active">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>Extending Ry with C++</h2>
+        <p>
+          One of Ry's most powerful features is its ability to load and interact
+          with native C++ code. This allows you to write performance-critical
+          code in C++, access system-level APIs, or integrate with existing C++
+          libraries.
+        </p>
+
+        <h3>Creating a Native Module</h3>
+        <p>
+          A native module is a C++ source file that defines one or more
+          functions to be exposed to Ry. You'll need to include the Ry C++
+          header and define an initialization function.
+        </p>
+        <p>
+          Let's create a simple math library called <code>mymath.cpp</code>.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="comment">// mymath.cpp</span>
+<span class="comment">// Note: This requires a C++ compiler and the Ry Library Development Kit (libry_dk.h)</span>
+<span class="keyword">#include</span> <span class="string">"libry_dk.h"</span> <span class="comment">// The Ry Library Development Kit header.</span>
+
+<span class="comment">// Native functions receive the arg count and a pointer to the args.</span>
+<span class="keyword">RyValue</span> native_add(<span class="keyword">int</span> argCount, <span class="keyword">RyValue</span>* args, <span class="keyword">std::map</span>&lt;std::string, <span class="keyword">RyValue</span> &globals) {
+    <span class="comment">// Expect two number arguments.</span>
+    <span class="keyword">if</span> argCount != 2 || !args[0].is_number() || ! {
+        <span class="keyword">return</span> RyValue(); <span class="comment">// Returns null.
+        <span class="comment">// For the module to see an error message I highly recommend to write a <code>.ry</code> file with a <code>panic</code> keyword</span></span>
+    }
+    <span class="keyword">double</span> a = AS_NUMBER(args[0]);
+    <span class="keyword">double</span> b = AS_NUMBER(args[1]);
+    <span class="keyword">return</span> NUMBER_VAL(a + b);
+}
+
+<span class="comment">// The VM looks for a function named `init_ry_module` to initialize the module.</span>
+<span class="keyword">extern</span> <span class="string">"C"</span> <span class="keyword">void</span> ry_init_module(RyRegisterFn reg, void *target) {
+    reg(<span class="string">"add"</span>, native_add);
+}
+</code></pre>
+        </div>
+
+        <h3>Compiling the Module</h3>
+        <p>
+          The C++ code must be compiled into a shared library (<code>.so</code>
+          on Linux, <code>.dylib</code> on macOS, <code>.dll</code> on Windows)
+          that the Ry interpreter can load at runtime.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="comment"># Compile on Linux/macOS</span>
+g++ -shared -fPIC -o mymath.so -O3 -march=native -flto -DNDEBUG -std=c++20 mymath.cpp
+</code></pre>
+        </div>
+
+        <h3>Using the Module in Ry</h3>
+        <p>
+          Use the built-in <code>use()</code> function to load your compiled
+          module. Ry automatically searches for the library in standard paths
+          and the current script's directory. Once loaded, the native functions
+          are available globally.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="comment"># main.ry</span>
+<span class="comment"># Loads mymath.so and executes its init function.</span>
+use("mymath")
+<span class="keyword">data</span> result = add(15, 27)
+<span class="keyword">out</span>(<span class="string">"The native result is: ${result}"</span>) <span class="comment"># Output: The native result is: 42</span>
+</code></pre>
+        </div>
+
+        <h3>Error Handling</h3>
+        <p>
+          Returning <code>nil</code> is a simple way to signal failure, but it
+          doesn't provide any message. For a more beautiful error handling, you
+          can use the VM's panic system.
+        </p>
+        <p>
+          Let's dive even deeper into how Ry works by examining its
+          <a href="bytecode.html">Bytecode</a>.
+        </p>
+        <a href="bytecode.html" style="color: white">Next: Bytecode!</a>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

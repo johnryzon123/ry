@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Namespaces</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Namespaces</h1>
+      <p class="tagline">Organizing your code into logical groups.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html" class="active">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>Organizing Code</h2>
+        <p>
+          As your project grows, keeping everything in the global scope can lead
+          to name collisions. Ry provides <strong>Namespaces</strong> to help
+          you organize your code into logical units.
+        </p>
+
+        <h3>Defining a Namespace</h3>
+        <p>
+          Use the <code>namespace</code> keyword to define a new namespace. You
+          can define variables, functions, and classes inside it.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">namespace</span> Math {
+    <span class="keyword">data</span> PI = 3.14159
+
+    <span class="keyword">func</span> circleArea(<span class="keyword">data</span> radius) {
+        <span class="keyword">return</span> PI * radius * radius
+    }
+}
+</code></pre>
+        </div>
+
+        <h3>Using Namespaces</h3>
+        <p>
+          You can access the members of a namespace using the dot
+          <code>.</code> operator.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">out</span>(Math.PI)
+<span class="keyword">out</span>(Math.circleArea(10))
+</code></pre>
+        </div>
+
+        <p>
+          Namespaces are a great step towards modular applications. For even
+          more performance and system access, check out
+          <a href="cpp-modules.html">C++ Modules</a>.
+        </p>
+        <a href="cpp-modules.html" style="color: white">Next: C++ Modules!</a>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

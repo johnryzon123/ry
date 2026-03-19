@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
-    <title>Ry | The Friendly Interpreter</title>
+    <title>Ry | Home</title>
   </head>
   <body>
     <nav>
@@ -25,6 +25,7 @@
 
     <header class="hero">
       <h1>Built for You.</h1>
+      <p class="tagline">Fast. Register-Based. Reliable.</p>
       <p class="tagline">
         Ry2 is a high-performance bytecode interpreter designed for developers
         who need speed, safety, and visual diagnostics.
@@ -60,8 +61,15 @@
             dynamically with the <code>use()</code> system.
           </p>
         </div>
+        <div class="card">
+          <h3>Register-Based Speed</h3>
+          <p>
+            Utilizing <strong>Direct Threading</strong> and
+            <strong>Constant Folding</strong>, Ry2 executes 1M iterations in
+            under 0.23s.
+          </p>
+        </div>
       </div>
-
       <div class="code-box">
         <div class="code-header">
           <div class="dot" style="background: #ff5f56"></div>
@@ -71,10 +79,42 @@
         <pre><code><span class="keyword">func</span> greet(<span class="keyword">data</span> name) {
     <span class="keyword">out</span>(<span class="string">"Hello ${name}"</span>)
 }
-<span class="keyword">data</span> name = <span class="keyword">input</span>(<snap class="string">"Enter your name: "</snap>)
+<span class="keyword">data</span> name = <span class="keyword">input</span>(<span class="string">"Enter your name: "</span>)
 greet(name)
 </code></pre>
       </div>
+      <section class="benchmarks" style="margin-top: 4rem; text-align: center">
+        <h2>Performance by Design</h2>
+        <p>
+          Ry2 doesn't just run code; it optimizes it. Using
+          <strong>Direct Threading</strong> and
+          <strong>Constant Folding</strong>, the Register-based VM delivers
+          near-native speeds.
+        </p>
+
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="comment">// Fibonacci 1M iterations</span>
+<span class="keyword">ry</span> run examples/fib.ry
+<span class="success">Result: inf</span>
+<span class="success">Time Taken: 0.229462 seconds</span></code></pre>
+        </div>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code>
+<span class="error">Error: NameError: Undefined variable 'dwad'.</span>
+  2 | return _2()
+    |         <span class="error">^~~</span></code></pre>
+        </div>
+      </section>
     </div>
 
     <footer>

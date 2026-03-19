@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Error Handling</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Error Handling</h1>
+      <p class="tagline">Managing runtime errors gracefully.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html" class="active">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>Panics</h2>
+        <p>
+          When Ry encounters an unrecoverable situation (like dividing by zero
+          or calling a variable that isn't a function), it triggers a
+          <strong>panic</strong>. A panic typically stops the program execution
+          and prints an error message with a stack trace.
+        </p>
+        <p>
+          You can also manually trigger a panic in your code using the built-in
+          <code>panic</code> keyword.
+        </p>
+        <div class="code-box">
+          <pre><code><span class="keyword">func</span> divide(<span class="keyword">data</span> a, <span class="keyword">data</span> b) {
+    <span class="keyword">if</span> (b == 0) {
+        <span class="keyword">panic</span> <span class="string">"Cannot divide by zero!"</span>
+    }
+    <span class="keyword">return</span> a / b
+}
+</code></pre>
+        </div>
+
+        <h2>Attempt and Fail</h2>
+        <p>
+          To handle errors gracefully without crashing the entire program, Ry
+          provides the <code>attempt</code> and <code>fail</code> blocks.
+        </p>
+        <p>
+          Code inside the <code>attempt</code> block is executed safely. If a
+          panic occurs within that block, execution immediately jumps to the
+          <code>fail</code> block.
+        </p>
+
+        <h3>Capturing the Error</h3>
+        <p>
+          The <code>fail</code> block can optionally accept a variable name,
+          which will be assigned the error message associated with the panic.
+        </p>
+        <div class="code-box">
+          <pre><code><span class="keyword">attempt</span> {
+    <span class="comment"># This will cause a panic</span>
+    <span class="keyword">out</span>(10/0)
+} <span class="keyword">fail</span> err {
+    <span class="keyword">out</span>(<span class="string">"Caught error: ${err}"</span>)
+}
+
+<span class="keyword">out</span>(<span class="string">"Program continues..."</span>)
+</code></pre>
+        </div>
+        <p>
+          Now that you can handle errors, let's look at how to organize your
+          code with <a href="namespaces.html">Namespaces</a>.
+        </p>
+        <a href="namespaces.html" style="color: white">Next: Namespaces!</a>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

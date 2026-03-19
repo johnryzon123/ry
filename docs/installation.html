@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Installation</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Installation</h1>
+      <p class="tagline">Get up and run the Ry interpreter.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html" class="active">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>Building from Source</h2>
+        <p>
+          Currently, the primary way to install Ry is by building it directly
+          from the source code. This ensures you have the latest version and
+          allows for customization.
+        </p>
+
+        <h3>Tools Needed</h3>
+        <p>Before you begin, make sure you have the following installed:</p>
+        <ul>
+          <li>A modern C++ compiler (GCC, Clang, or MSVC)</li>
+          <li>CMake (version 3.10 or higher)</li>
+          <li>Git</li>
+        </ul>
+
+        <h3>Clone the Repository</h3>
+        <p>
+          First, clone the official Ry2 repository from GitHub to your local
+          machine.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code>$ git clone https://github.com/johnryzon123/Ry2.git
+$ cd Ry2
+          </code></pre>
+        </div>
+
+        <h3>Configure and Build</h3>
+        <p>
+          Next, use the build script to generate the build files for your system
+          and then compile the project.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code>$ ./scripts/build.sh</code></pre>
+        </div>
+        <h3>Install System-Wide (Optional but Recommended)</h3>
+        <p>
+          After a successful build, you can install the
+          <code>ry</code>
+          executable to a system-wide directory to make it accessible from
+          anywhere in your terminal.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code>sudo ./scripts/install.sh
+</code></pre>
+        </div>
+
+        <h3>Next Steps</h3>
+        <p>
+          That's it! You should now have a working <code>ry</code> executable.
+          Let's move on to writing your first program.
+        </p>
+        <a href="hello-world.html" style="color: white"
+          >Next: Your First Program!</a
+        >
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

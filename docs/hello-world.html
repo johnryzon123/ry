@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Your First Program</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Your First Program</h1>
+      <p class="tagline">Your first program in the Ry language.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html" class="active">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>Running Your First Script</h2>
+        <p>
+          With Ry installed, you're ready to write and run your first program.
+          The "Hello World" is a classic tradition, so let's start there.
+        </p>
+
+        <h3>Create a File</h3>
+        <p>
+          Open your favorite text editor and create a new file named
+          <code>hello.ry</code>.
+        </p>
+
+        <h3>Write the Code</h3>
+        <p>
+          Enter the following code into the file. This program uses the built-in
+          <code>out()</code> function to print a line of text to the console.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="comment"># hello.ry</span>
+<span class="keyword">out</span>(<span class="string">"Hello, World!"</span>)
+          </code></pre>
+        </div>
+
+        <h3>Run from the Terminal</h3>
+        <p>
+          Go to the directory where you saved <code>hello.ry</code> and run it
+          using the <code>ry</code> interpreter.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code>$ ry hello.ry
+          </code></pre>
+        </div>
+
+        <h3>Output</h3>
+        <p>You should see the following output in your terminal:</p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code>Hello, World!
+          </code></pre>
+        </div>
+
+        <h3>Congratulations!</h3>
+        <p>
+          You've successfully executed your first Ry script. You are now ready
+          to dive into the basics of the language.
+        </p>
+        <a href="variables.html" style="color: white"
+          >Next: Variables & Types!</a
+        >
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

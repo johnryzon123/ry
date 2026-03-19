@@ -161,6 +161,56 @@ pre {
 .string {
   color: #e9cc6f;
 }
+.comment {
+  color: #8b949e; /* GitHub's comment gray */
+}
+
+/* Docs Layout */
+.docs-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 60px;
+}
+.sidebar h4 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.5;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+.sidebar a {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  padding: 8px 0;
+  opacity: 0.8;
+  transition: 0.2s;
+}
+.sidebar a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+.sidebar a.active {
+  color: var(--accent);
+  font-weight: 600;
+  opacity: 1;
+}
+.sidebar hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+.docs-content h2 {
+  font-size: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 15px;
+  margin-top: 0;
+}
+.docs-content h3 {
+  font-size: 1.8rem;
+  margin-top: 40px;
+}
 
 footer {
   text-align: center;

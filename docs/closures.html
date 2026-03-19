@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Closures</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Closures</h1>
+      <p class="tagline">Capturing a function's enclosing environment.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html" class="active">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>What is a Closure?</h2>
+        <p>
+          A closure is a function that remembers the environment in which it was
+          created. Because functions in Ry are first-class (they can be treated
+          like any other value), you can return them from other functions. When
+          you do, they "close over" any variables they reference from their
+          parent scope.
+        </p>
+        <p>
+          This allows you to create stateful functions that retain access to
+          data even after their parent function has finished executing.
+        </p>
+
+        <h3>Example: A Simple Counter</h3>
+        <p>
+          The classic example of a closure is a counter. The outer function is
+          called once, creating a persistent state (the variable
+          <code>i</code>), and the inner function can modify that state on each
+          call.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">func</span> makeCounter() {
+    <span class="keyword">data</span> i = 0
+    <span class="keyword">func</span> count() {
+        i = i + 1
+        <span class="keyword">return</span> i
+    }
+    <span class="keyword">return</span> count
+}
+
+<span class="comment"># makeCounter() returns the 'count' function, which closes over 'i'</span>
+<span class="keyword">data</span> counter = makeCounter()
+
+<span class="keyword">out</span>(counter()) <span class="comment"># Output: 1</span>
+<span class="keyword">out</span>(counter()) <span class="comment"># Output: 2</span>
+<span class="keyword">out</span>(counter()) <span class="comment"># Output: 3</span>
+</code></pre>
+        </div>
+
+        <h3>Example: Function Factories</h3>
+        <p>
+          Closures are also excellent for creating "function
+          factories"—functions that generate and configure other functions.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">func</span> makeAdder(<span class="keyword">data</span> x) {
+    <span class="comment"># This inner function closes over 'x'</span>
+    <span class="keyword">func</span> add(<span class="keyword">data</span> y) {
+        <span class="keyword">return</span> x + y
+    }
+    <span class="keyword">return</span> add
+}
+
+<span class="comment"># Create a specialized function that adds 5 to any number</span>
+<span class="keyword">data</span> add5 = makeAdder(5)
+
+<span class="comment"># Create another one that adds 10</span>
+<span class="keyword">data</span> add10 = makeAdder(10)
+
+<span class="keyword">out</span>(add5(2))  <span class="comment"># Output: 7</span>
+<span class="keyword">out</span>(add10(2)) <span class="comment"># Output: 12</span>
+</code></pre>
+        </div>
+
+        <p>
+          With an understanding of functions and closures, you're ready to add
+          define your own custom objects using
+          <a href="classes.html">Classes</a>.
+        </p>
+        <a href="classes.html" style="color: white">Next: Classes!</a>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

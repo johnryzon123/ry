@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Functions</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Functions</h1>
+      <p class="tagline">Organizing code into reusable blocks.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html" class="active">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>Defining and Calling Functions</h2>
+        <p>
+          Functions are fundamental building blocks for writing clean, reusable
+          code. In Ry, you can define a function using the <code>func</code>
+          keyword, followed by the function name and a block of code.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="comment"># Define a simple function</span>
+<span class="keyword">func</span> sayHello() {
+    <span class="keyword">out</span>(<span class="string">"Hello from a function!"</span>)
+}
+
+<span class="comment"># Call the function</span>
+sayHello()
+</code></pre>
+        </div>
+
+        <h3>Parameters</h3>
+        <p>
+          You can pass data into functions through parameters. Parameters are
+          declared within the parentheses after the function name, using the
+          same <code>data</code> keyword as variables.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">func</span> greet(<span class="keyword">data</span> name) {
+    <span class="keyword">out</span>(<span class="string">"Hello, ${name}!"</span>)
+}
+
+greet(<span class="string">"Bob"</span>) <span class="comment"># Output: Hello, Bob!</span>
+greet(<span class="string">"Charlie"</span>) <span class="comment"># Output: Hello, Charlie!</span>
+</code></pre>
+        </div>
+
+        <h3>Return Values</h3>
+        <p>
+          Functions can process data and return a result using the
+          <code>return</code> keyword. When a <code>return</code> statement is
+          executed, the function immediately exits and passes the specified
+          value back to where it was called.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">func</span> add(<span class="keyword">data</span> a, <span class="keyword">data</span> b) {
+    <span class="keyword">return</span> a + b
+}
+
+<span class="keyword">data</span> sum = add(5, 3)
+<span class="keyword">out</span>(sum) <span class="comment"># Output: 8</span>
+</code></pre>
+        </div>
+
+        <p>
+          Functions in Ry are first-class citizens, which means they can be
+          passed around like any other data. This enables powerful patterns like
+          <a href="closures.html">Closures</a>.
+        </p>
+        <a href="closures.html" style="color: white">Next: Closures!</a>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Control Flow</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Control Flow</h1>
+      <p class="tagline">
+        Making decisions and repeating actions in your code.
+      </p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html" class="active">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>Conditional Execution</h2>
+        <p>
+          Control flow statements allow you to execute code selectively based on
+          certain conditions. The most common way to do this is with
+          <code>if</code>, <code>else if</code>, and <code>else</code>.
+        </p>
+
+        <h3>if / else if / else / unless</h3>
+        <p>
+          An <code>if</code> statement executes a block of code only if its
+          condition is <code>true</code>. It can be followed by one or more
+          <code>else if</code> blocks and an optional <code>else</code> block,
+          which runs if no preceding conditions were met. The
+          <code>unless</code> statement is just the opposite of if, I prefer
+          using <code>unless</code> instead of having lot's of
+          <code>!(Not)</code> characters everywhere.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> score = 85
+
+<span class="keyword">if</span> (score >= 90) {
+    <span class="keyword">out</span>(<span class="string">"Grade: A"</span>)
+} <span class="keyword">else if</span> (score >= 80) {
+    <span class="keyword">out</span>(<span class="string">"Grade: B"</span>)
+} <span class="keyword">else</span> {
+    <span class="keyword">out</span>(<span class="string">"Grade: C or lower"</span>)
+}
+<span class="comment"># Output: Grade: B</span>
+<span class="keyword">unless</span> score >= 0 {
+    <span class="comment"># This examples uses the <code>panic</code> keyword you can find it in the error handling section</span>
+    <span class="keyword">panic</span> <span class="string">Score cannot be negative!!!"</span>
+}
+</code></pre>
+        </div>
+
+        <h2>Loops</h2>
+        <p>
+          Loops are used to execute a block of code repeatedly. Ry currently
+          supports <code>while</code>, <code>foreach</code> and
+          <code>do-until</code> loops.
+        </p>
+
+        <h3>while Loops</h3>
+        <p>
+          A <code>while</code> loop continues to execute its code block as long
+          as its condition remains <code>true</code>. It's important to ensure
+          the condition will eventually become false to avoid an infinite loop.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> i = 0
+<span class="keyword">while</span> i < 3 {
+    <span class="keyword">out</span>(<span class="string">"Hello number ${i}"</span>)
+    i = i + 1
+}
+
+<span class="comment"># Output:</span>
+<span class="comment"># Hello number 0</span>
+<span class="comment"># Hello number 1</span>
+<span class="comment"># Hello number 2</span>
+</code></pre>
+        </div>
+
+        <h3>foreach Loops</h3>
+        <p>
+          The <code>foreach</code> loop is ideal when you know exactly how many
+          times you want to iterate. It consists of an initializer, and an
+          iterable expression.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">foreach</span> <span class="keyword">data</span> i in 0 to 5 {
+    <span class="keyword">out</span>(<span class="string">"Iteration: ${i}"</span>)
+}
+<span class="comment"># Output: Iteration: 0 ... Iteration: 5</span>
+</code></pre>
+        </div>
+
+        <h3>do-until Loops</h3>
+        <p>
+          a <code>do-until</code> loop is like the <code>while</code> loop and
+          unless statement combined.The <code>unless</code> loop repeats a piece
+          of code until the condition is false.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> i = 0
+<span class="keyword">do</span> {
+  <span class="keyword">out</span>(<span class="string">"Hello number ${i}"</span>)
+  i = i + 1
+} <span class="keyword">until</span> i == 10
+<span class="comment"># Outputs: </span>
+<span class="comment"># Hello number 0 ... Hello number 9</span>
+</code></pre>
+        </div>
+
+        <h3>Congratulations on Mastering the Basics!</h3>
+        <p>
+          You've now covered all the fundamental concepts of the Ry language!
+          You're ready to explore more powerful features in the
+          <a href="cpp-modules.html">Advanced</a> section, starting with C++
+          extensibility.
+        </p>
+        <a href="cpp-modules.html" style="color: white">Next: C++ Modules!</a>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Bytecode</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Bytecode</h1>
+      <p class="tagline">A look under the hood of the Ry VM.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html" class="active">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>What is Bytecode?</h2>
+        <p>
+          When you run a Ry script, the code isn't executed directly. Instead,
+          it's first compiled by the Ry compiler into a series of compact,
+          platform-agnostic instructions called <strong>bytecode</strong>. This
+          bytecode is then run by the Ry Virtual Machine (VM).
+        </p>
+        <p>
+          Ry uses a <strong>register-based</strong> architecture, meaning
+          instructions operate on virtual registers rather than a stack. This
+          reduces instruction overhead and maps efficiently to modern CPU
+          architectures.
+        </p>
+
+        <h3>From Source to Instructions</h3>
+        <p>
+          Consider this simple Ry script that defines a variable and calls a
+          function.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> message = <span class="string">"Hello, VM!"</span>
+<span class="keyword">out</span>(message)
+</code></pre>
+        </div>
+
+        <h3>Disassembly View</h3>
+        <p>
+          The compiler turns that script into instructions that look like this:
+        </p>
+        <div class="code-box">
+          <pre><code><span class="comment"># == main chunk ==</span>
+<span class="comment"># Load "Hello, VM!" (const #0) into Register 0.</span>
+0000  OP_LOAD_CONST     R0, #0      <span class="comment">; "Hello, VM!"</span>
+
+<span class="comment"># Define global 'message' (const #1) with value from R0.</span>
+0001  OP_DEFINE_GLOBAL  R0, #1      <span class="comment">; "message"</span>
+
+<span class="comment"># Prepare call: Load 'out' (const #2) into R0.</span>
+0002  OP_GET_GLOBAL     R0, #2      <span class="comment">; "out"</span>
+
+<span class="comment"># Load argument 'message' (const #1) into R1.</span>
+0003  OP_GET_GLOBAL     R1, #1      <span class="comment">; "message"</span>
+
+<span class="comment"># Call function in R0 with 1 argument.</span>
+0004  OP_CALL           R0, 1
+
+<span class="comment"># Return result (in R0).</span>
+0005  OP_RETURN         R0
+</code></pre>
+        </div>
+
+        <h3>Documentation Complete!</h3>
+        <p>
+          Congratulations! You've reached the end of the Ry documentation. You
+          now have a complete overview of the language, from its basic syntax to
+          its advanced features and underlying execution model.
+        </p>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

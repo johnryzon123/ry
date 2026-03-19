@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Introduction</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Introduction</h1>
+      <p class="tagline">A high-level overview of the Ry language.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html" class="active">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>What is Ry?</h2>
+        <p>
+          Ry is a high-performance, register-based bytecode interpreter designed
+          for developers who value speed, safety, and excellent diagnostics. It
+          is the successor to the Ry1 VM, rebuilt from the ground up for better
+          performance and extensibility.
+        </p>
+
+        <h3>Core Features</h3>
+        <div class="grid">
+          <div class="card">
+            <h4>Modern Bytecode VM</h4>
+            <p>
+              Ry compiles source code into a compact and efficient bytecode
+              representation. This bytecode is then executed by the Ry2 Virtual
+              Machine, avoiding the performance pitfalls of tree-walking
+              interpreters and enabling near-native execution flow.
+            </p>
+          </div>
+          <div class="card">
+            <h4>C++ Extensibility</h4>
+            <p>
+              For performance-critical tasks, you can write native modules in
+              C++ and seamlessly integrate them into your Ry scripts using the
+              built-in <code>use()</code> system. This allows you to extend the
+              language with powerful, low-level functionality.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Visual Diagnostics</h4>
+            <p>
+              When errors occur, Ry provides precise, easy-to-understand
+              traceback. Its recursive engine highlights the exact location of
+              the problem with caret-precision and can even provide fuzzy
+              suggestions for typos.
+            </p>
+          </div>
+        </div>
+
+        <h3>Your First Program</h3>
+        <p>Here is a simple example of a Ry program:</p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">func</span> greet(<span class="keyword">data</span> name) {
+    <span class="keyword">out</span>(<span class="string">"Hello ${name}"</span>)
+}
+<span class="keyword">data</span> name = <span class="keyword">input</span>(<span class="string">"Enter your name: "</span>)
+greet(name)
+</code></pre>
+        </div>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>

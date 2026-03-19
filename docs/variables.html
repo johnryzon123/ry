@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Ry | Variables & Types</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Ry</a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="index.html">Docs</a>
+          <a href="../blog/index.html">Devlog</a>
+          <a
+            href="https://github.com/johnryzon123/Ry2"
+            style="color: var(--success)"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="hero">
+      <h1>Variables & Types</h1>
+      <p class="tagline">Storing and manipulating data in Ry.</p>
+    </header>
+
+    <div class="container docs-layout">
+      <div class="sidebar">
+        <h4>Getting Started</h4>
+        <a href="intro.html">Introduction</a>
+        <a href="installation.html">Installation</a>
+        <a href="hello-world.html">First Program</a>
+        <hr />
+        <h4>Basics</h4>
+        <a href="variables.html" class="active">Variables & Types</a>
+        <a href="operators.html">Operators</a>
+        <a href="functions.html">Functions</a>
+        <a href="closures.html">Closures</a>
+        <a href="classes.html">Classes</a>
+        <a href="control-flow.html">Control Flow</a>
+        <a href="error-handling.html">Error Handling</a>
+        <a href="namespaces.html">Namespaces</a>
+        <hr />
+        <h4>Advanced</h4>
+        <a href="cpp-modules.html">C++ Modules</a>
+        <a href="bytecode.html">Bytecode</a>
+      </div>
+      <main class="docs-content">
+        <h2>Declaring Variables</h2>
+        <p>
+          In Ry, variables are declared using the <code>data</code> keyword. Ry
+          is dynamically typed, meaning you don't need to specify the data type
+          explicitly; the interpreter infers it from the value assigned.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> message = <span class="string">"Hello Ry!"</span>
+<span class="keyword">data</span> count = 42
+<span class="keyword">data</span> pi = 3.14159
+</code></pre>
+        </div>
+
+        <h2>Data Types</h2>
+        <p>Ry supports several fundamental data types out of the box:</p>
+        <ul>
+          <li>
+            <strong>Number</strong>: Represents both integers and floating-point
+            numbers.
+          </li>
+          <li>
+            <strong>String</strong>: A sequence of characters enclosed in double
+            quotes.
+          </li>
+          <li>
+            <strong>Boolean</strong>: Represents <code>true</code> or
+            <code>false</code>.
+          </li>
+          <li>
+            <strong>Char</strong>: A single character enclosed in single quotes.
+          </li>
+          <li><strong>List</strong>: An ordered collection of values.</li>
+          <li><strong>Map</strong>: A collection of key-value pairs.</li>
+          <li><strong>Nil</strong>: Represents the absence of a value.</li>
+        </ul>
+
+        <h3>Strings & Interpolation</h3>
+        <p>
+          Strings in Ry are powerful. You can embed variables directly into
+          strings using the <code>${}</code> syntax. This is often cleaner than
+          concatenating strings manually.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> name = <span class="string">"Alice"</span>
+<span class="keyword">data</span> age = 25
+
+<span class="comment"># String interpolation</span>
+<span class="keyword">out</span>(<span class="string">"User: ${name}, Age: ${age}"</span>)
+</code></pre>
+        </div>
+
+        <h3>Characters</h3>
+        <p>
+          A <code>Char</code> represents a single character. Unlike strings,
+          characters are enclosed in single quotes <code>'</code>.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> letter = <span class="string">'A'</span>
+<span class="keyword">data</span> symbol = <span class="string">'$'</span>
+</code></pre>
+        </div>
+
+        <h3>Numbers</h3>
+        <p>
+          Numbers handle arithmetic operations. Whether you are working with
+          whole numbers or decimals, the <code>Number</code> type covers it.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> x = 10
+<span class="keyword">data</span> y = 5.5
+<span class="keyword">data</span> result = x + y
+
+<span class="keyword">out</span>(result) <span class="comment"># Output: 15.5</span>
+</code></pre>
+        </div>
+
+        <h3>Lists (Arrays)</h3>
+        <p>
+          Ry supports lists, which are ordered collections of values. You can
+          create a list by enclosing comma-separated values in square brackets
+          <code>[]</code>.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> numbers = [1, 2, 3, 5, 8]
+<span class="keyword">data</span> mixed = [<span class="string">"apple"</span>, 100, true]
+
+<span class="comment"># Access elements by index (starting from 0)</span>
+<span class="keyword">out</span>(numbers[0]) <span class="comment"># Output: 1</span>
+
+<span class="comment"># You can also modify elements</span>
+mixed[1] = 200
+<span class="keyword">out</span>(mixed[1]) <span class="comment"># Output: 200</span>
+</code></pre>
+        </div>
+
+        <h3>Maps (Dictionaries)</h3>
+        <p>
+          Maps allow you to store data in key-value pairs. You can create a map
+          using curly braces <code>{}</code>.
+        </p>
+        <div class="code-box">
+          <div class="code-header">
+            <div class="dot" style="background: #ff5f56"></div>
+            <div class="dot" style="background: #ffbd2e"></div>
+            <div class="dot" style="background: #27c93f"></div>
+          </div>
+          <pre><code><span class="keyword">data</span> user = {
+    <span class="string">"name"</span>: <span class="string">"Alice"</span>,
+    <span class="string">"role"</span>: <span class="string">"Admin"</span>
+}
+
+<span class="keyword">out</span>(user[<span class="string">"name"</span>]) <span class="comment"># Output: Alice</span>
+
+user[<span class="string">"score"</span>] = 100
+</code></pre>
+        </div>
+
+        <p>
+          For more complex logic, learn how to manipulate these values in the
+          <a href="operators.html">Operators</a> section.
+        </p>
+        <a href="operators.html" style="color: white">Next: Operators!</a>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Johnryzon. Ry2 is licensed under MIT.</p>
+    </footer>
+  </body>
+</html>
